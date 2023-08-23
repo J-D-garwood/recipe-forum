@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS recipeforum_db;
+DROP DATABASE IF EXISTS recipe_db;
 
-CREATE DATABASE recipeforum_db;
+CREATE DATABASE recipe_db;
