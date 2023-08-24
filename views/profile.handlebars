@@ -1,0 +1,18 @@
+<div class="user-profile">
+  <h2>Welcome, {{user.name}}!</h2>
+  <p>Email: {{user.email}}</p>
+
+  {{#if user.projects.length}}
+  <h3>Your Projects:</h3>
+  <ul>
+    {{#each user.projects as |project|}}
+    <li>
+      <h4><a href="/projects/{{project.id}}">{{project.name}}</a></h4>
+      <p>Description: {{project.description}}</p>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>
