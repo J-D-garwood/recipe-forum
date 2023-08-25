@@ -25,7 +25,14 @@ UserFavoriteRecipe.init(
                 key: 'id',
               },
         },
-    }
+    },
+    {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'userfavouriterecipe',
+}
 )
 
 module.exports = UserFavoriteRecipe;

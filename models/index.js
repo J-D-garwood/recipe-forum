@@ -39,4 +39,4 @@ Recipe.hasMany(Comment, {
 })
 
 
-module.exports = { User, Recipe };
+module.exports = { User, Recipe, Comment, UserFavoriteRecipe};
