@@ -24,23 +24,53 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/recipe/:id', async (req, res) => {
+//GET route to return the recipe by id
+router.get('/recipe/:id', withAuth, async (req, res) => {
   try {
-    const recipeData = await Recipe.findByPk(req.params.id, {
+    const dbBlogData = await Recipe.findByPk(req.params.id, {
+      include: [{ model: User, through: UserFavoriteRecipe }],
+      attributes: {
+        include: [
+          [
+            //  plain SQL to get a count of likes for the recipe
+            sequelize.literal(
+              `(SELECT COUNT(*) FROM userfavoriterecipe where  userfavoriterecipe.recipe_id=${req.params.id})`
+            ),
+            'likes',
+          ],
+        ],
+      },
       include: [
         {
           model: User,
           attributes: ['name'],
         },
+        {
+          model: Comment,
+          attributes: ['dateCreated', 'comment'],
+          include: [
+            {
+              model: User,
+              attributes: ['name'],
+            },
+          ],
+        },
       ],
     });
-    const recipe = recipeData.get({ plain: true });
+    req.session.recipeId = req.params.id;
+    const recipe = dbBlogData.get({ plain: true });
+    fs.writeFileSync(
+      __dirname + '/public/images/' + recipe.title,
+      recipe.photo
+    );
     console.log(recipe);
     res.render('recipe-details', {
       recipe,
-      logged_in: req.session.logged_in,
+      recipeId: req.session.recipeId,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
