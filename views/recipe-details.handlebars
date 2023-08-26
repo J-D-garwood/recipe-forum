@@ -65,7 +65,56 @@
       >{{recipe.instructions}}</textarea>
     </div>
     {{! ============================Comment========================== }}
+    <div
+      class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-12'
+    >
+      <form class='form comment-form'>
+        <div class='form-group col-6 col-sm-12'>
 
+          <input
+            class='form-input'
+            type='textArea'
+            id='text-comment'
+            placeholder='Comment'
+          />
+        </div>
+        <div class='form-group'>
+          <button class='btn btn-primary' type='submit'>Save</button>
+        </div>
+      </form>
+    </div>
+    <div
+      class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-12'
+    >
+      <h4 class='px-3 mb-3'>{{this.recipe.comments.length}} Comments 💬</h4>
+
+      {{#each recipe.comments as |comment|}}
+        <section class='ms-4'>
+          <h6 class='fs-5 mb-0'>{{comment.user.name}}</h6>
+          <h6 class='card-subtitle text-body-secondary mb-2'>
+            {{format_date comment.dateCreated}}</h6>
+          {{comment.comment}}
+          <hr class='opacity-25' />
+        </section>{{/each}}
+      <form class='form comment-form'>
+        <div class='form-group col-6 col-sm-12'>
+          <input
+            class='form-input'
+            type='textArea'
+            id='text-comment'
+            placeholder='Comment'
+          />
+        </div>
+        <div class='form-group'>
+          <button
+            id='save-comment'
+            class='btn btn-primary ms-4 rounded-pill px-4 py-0'
+            type='submit'
+          >Save</button>
+        </div>
+      </form>
+
+    </div>
   </div>
 </div>
 <script src='/js/recipeDetails.js'></script>

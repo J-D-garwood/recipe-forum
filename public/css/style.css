@@ -1,0 +1,54 @@
+.card,
+.comment-form {
+    /* margin: 20px; */
+    /* flex: 0 1 100%; */
+    /* border: 7px double var(--dark); */
+    /* border-radius: 10px; */
+    /* background-color: var(--secondary); */
+    /* color: var(--dark); */
+    width: 100%;
+}
+
+.card-body {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#text-comment {
+    height: 100px;
+    /* background-color: var(--light); */
+}
+
+.recipe-textarea {
+    color: #000000;
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    /* height: calc(100% - 50px); */
+    padding: 20px 15px 100px 15px;
+    line-height: 20px;
+
+}
+
+.textarea {
+    /* display: block; */
+    outline: none;
+    border: none;
+    resize: none;
+    height: calc(100% - 68px);
+    width: 100%;
+    /* overflow: hidden; */
+    /* resize: both; */
+    min-height: 40px;
+    line-height: 22px;
+
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    /* visibility: hidden; */
+
+}
