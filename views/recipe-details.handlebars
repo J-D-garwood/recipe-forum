@@ -1,0 +1,48 @@
+<div class='container'>
+  <div class='row justify-content-evenly'>
+    <div class='col-12 col-sm-12 px-0'>
+      <div class='card border-light mb-3'>
+        <div class='row g-0'>
+          <div class='col-md-6'>
+
+            <img
+              src='/images/recipe.jpg'
+              }}
+              class='img-fluid rounded-start'
+              alt='...'
+            />
+          </div>
+          <div class='col-md-6'>
+            <div class='card-body'>
+              <h2
+                class='my-3'
+                class='font-monospace card-title'
+              >{{recipe.title}}</h2>
+
+              <p class='fw-light card-text'>{{recipe.description}}</p>
+              <h6 class='card-subtitle text-body-secondary'>Published:
+                {{format_date recipe.dateCreated}}</h6>
+              <h6 class='my-3'>By :</h6>
+              <h6 class='fs-5'>{{recipe.user.name}}</h6>
+              <a id='like-link' class='opacity-50 position-relative'>
+
+                <span
+                  class='m-4 badge bg-light rounded-pill fw-lighter'
+                  style='color: #a2041c;'
+                >
+                  <i
+                    id='love'
+                    class='fa-solid fa-heart'
+                    style='color: #9c162a;'
+                  ></i>
+                  10
+                  <span class='visually-hidden'>unread messages</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script src='/js/recipeDetails.js'></script>
