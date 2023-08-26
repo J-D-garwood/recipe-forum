@@ -55,7 +55,9 @@ iconLove.addEventListener('click', (event) => {
 
 const newFormHandler = async (event) => {
   event.preventDefault();
-  const id = window.location.toString().split('/').length - 1;
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
   const comment = document.querySelector('#text-comment').value.trim();
   if (comment) {
     const response = await fetch(`/api/comment`, {
