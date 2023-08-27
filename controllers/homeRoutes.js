@@ -23,8 +23,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-//GET route to return the recipe by id
+//GET route to return all the details related to a recipe by it's id
 router.get('/recipe/:id', withAuth, async (req, res) => {
   try {
     const dbBlogData = await Recipe.findByPk(req.params.id, {
@@ -32,20 +31,30 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
       attributes: {
         include: [
           [
-            //  plain SQL to get a count of likes for the recipe
+            //  plain SQL to get total number of likes for the recipe by passing id
             sequelize.literal(
-              `(SELECT COUNT(*) FROM userfavoriterecipe where  userfavoriterecipe.recipe_id=${req.params.id})`
+              `(SELECT COUNT(*) FROM userfavoriterecipe WHERE  userfavoriterecipe.recipe_id=${req.params.id})`
             ),
             'likes',
+          ],
+
+          [
+            //  plain SQL which returns 1 if the logged in user liked the recipe and 0 if not.
+            sequelize.literal(
+              `(SELECT COUNT(*) FROM userfavoriterecipe WHERE  userfavoriterecipe.recipe_id=${req.params.id} AND userfavoriterecipe.user_id=${req.session.userId})`
+            ),
+            'liked',
           ],
         ],
       },
       include: [
+        //to get the name of the user who posted the recipe
         {
           model: User,
           attributes: ['name'],
         },
         {
+          //to get all the comments related to the recipe including the names of the users who commented
           model: Comment,
           attributes: ['dateCreated', 'comment'],
           include: [
@@ -63,11 +72,18 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
       __dirname + '/public/images/' + recipe.title,
       recipe.photo
     );
-    console.log(recipe);
+    //to show the like button on handlebars as clicked or not
+    if (recipe.liked === 1) {
+      req.session.Liked = true;
+    } else {
+      req.session.Liked = false;
+    }
     res.render('recipe-details', {
       recipe,
       recipeId: req.session.recipeId,
+      userId: req.session.userId,
       loggedIn: req.session.loggedIn,
+      Liked: req.session.Liked,
     });
   } catch (err) {
     console.log(err);
@@ -102,4 +118,26 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Create a new entry to the table userfavoriterecipe if the recipe is already not liked,otherwise delete the entry
+router.post('/recipe/like', async (req, res) => {
+  try {
+    let [dbFavoriteRecipeData, created] = await UserFavoriteRecipe.findOrCreate(
+      {
+        where: { recipeId: req.body.id, userId: req.session.userId },
+      }
+    );
+
+    if (!created) {
+      dbFavoriteRecipeData = await UserFavoriteRecipe.destroy({
+        where: { recipeId: req.body.id, userId: req.session.userId },
+      });
+      res.status(204).json(dbFavoriteRecipeData);
+    } else {
+      res.status(201).json(dbFavoriteRecipeData);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

@@ -12,33 +12,42 @@
               alt='...'
             />
           </div>
-          <div class='col-md-6'>
+           <div class='col-md-6'>
             <div class='card-body'>
               <h2
                 class='my-3'
                 class='font-monospace card-title'
               >{{recipe.title}}</h2>
-
               <p class='fw-light card-text'>{{recipe.description}}</p>
               <h6 class='card-subtitle text-body-secondary'>Published:
                 {{format_date recipe.dateCreated}}</h6>
               <h6 class='my-3'>By :</h6>
               <h6 class='fs-5'>{{recipe.user.name}}</h6>
-              <a id='like-link' class='opacity-50 position-relative'>
-
-                <span
-                  class='m-4 badge bg-light rounded-pill fw-lighter'
-                  style='color: #a2041c;'
+              <a id='like-link' class='position-relative'>
+                {{#if Liked}}
+                   <span
+                  id='span-like'
+                  class='opacity-100 m-4 badge rounded-pill fw-lighter'
                 >
+                {{else}}<span
+                  id='span-like'
+                  class='opacity-50 m-4 badge rounded-pill fw-lighter'
+                >
+                {{/if}}
                   <i
                     id='love'
                     class='fa-solid fa-heart'
                     style='color: #9c162a;'
                   ></i>
-                  {{recipe.likes}}
+
                   <span class='visually-hidden'>unread messages</span>
                 </span>
               </a>
+              <h6
+                id='recipe-likes'
+                class='card-subtitle text-body-secondary'
+              >{{recipe.likes}}
+                likes</h6>
             </div>
           </div>
         </div>
