@@ -37,7 +37,6 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
             ),
             'likes',
           ],
-
           [
             //  plain SQL which returns 1 if the logged in user liked the recipe and 0 if not.
             sequelize.literal(
@@ -68,10 +67,6 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
     });
     req.session.recipeId = req.params.id;
     const recipe = dbBlogData.get({ plain: true });
-    fs.writeFileSync(
-      __dirname + '/public/images/' + recipe.title,
-      recipe.photo
-    );
     //to show the like button on handlebars as clicked or not
     if (recipe.liked === 1) {
       req.session.Liked = true;

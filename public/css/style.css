@@ -37,10 +37,7 @@
     outline: none;
     border: none;
     resize: none;
-    height: calc(100% - 68px);
     width: 100%;
-    /* overflow: hidden; */
-    /* resize: both; */
     min-height: 40px;
     line-height: 22px;
 
@@ -49,6 +46,9 @@
 a:hover {
     text-decoration: none;
     cursor: pointer;
-    /* visibility: hidden; */
+}
 
+#span-like {
+    padding: 10px;
+    background-color: var(--light);
 }

@@ -35,12 +35,10 @@
                 >
                 {{/if}}
                   <i
-                    id='love'
+                    id='icon-like'
                     class='fa-solid fa-heart'
                     style='color: #9c162a;'
                   ></i>
-
-                  <span class='visually-hidden'>unread messages</span>
                 </span>
               </a>
               <h6
@@ -60,7 +58,7 @@
     >
       <h4 class='px-3 mb-3'>Ingredients</h4>
       <textarea
-        class='px-3 py-3 textarea resize-ta'
+        class='px-3 py-3 textarea resize-ingredients'
       >{{recipe.ingredients}}</textarea>
     </div>
     {{! ============================Instructions========================== }}
@@ -70,32 +68,14 @@
 
       <h4 class='px-3 mb-3'>Instructions</h4>
       <textarea
-        class='px-3 py-3 textarea resize-ingredients'
+        class='px-3 py-3 textarea resize-instructions'
       >{{recipe.instructions}}</textarea>
     </div>
     {{! ============================Comment========================== }}
     <div
       class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-12'
     >
-      <form class='form comment-form'>
-        <div class='form-group col-6 col-sm-12'>
-
-          <input
-            class='form-input'
-            type='textArea'
-            id='text-comment'
-            placeholder='Comment'
-          />
-        </div>
-        <div class='form-group'>
-          <button class='btn btn-primary' type='submit'>Save</button>
-        </div>
-      </form>
-    </div>
-    <div
-      class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-12'
-    >
-      <h4 class='px-3 mb-3'>{{this.recipe.comments.length}} Comments 💬</h4>
+      <h5 class='px-3 mb-3'>{{this.recipe.comments.length}} Comments 💬</h5>
 
       {{#each recipe.comments as |comment|}}
         <section class='ms-4'>
@@ -106,7 +86,7 @@
           <hr class='opacity-25' />
         </section>{{/each}}
       <form class='form comment-form'>
-        <div class='form-group col-6 col-sm-12'>
+        <div class='form-group col-12 col-sm-12'>
           <input
             class='form-input'
             type='textArea'
