@@ -1,0 +1,21 @@
+*::before,
+*::after,
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+a {
+  font-family: "Staatliches", cursive;
+}
+
+li,
+p,
+h3 {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.background-homepage{
+  background-color:rgb(189, 189, 189);
+}
