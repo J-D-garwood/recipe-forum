@@ -16,25 +16,32 @@ User.hasMany(Recipe, {
 // User belongToMany Recipe (through UserFavoriteRecipe)
 User.belongsToMany(Recipe, {
   through: UserFavoriteRecipe,
-  foreignKey: 'userId',
 });
 
 // Recipe belongToMany User (through UserFavoriteRecipe)
 Recipe.belongsToMany(User, {
   through: UserFavoriteRecipe,
-  foreignKey: 'recipeId',
 });
 
+// Comment belongs to Recipe
 Comment.belongsTo(Recipe, {
   foreignKey: 'recipeId',
 });
 
+// Recipe can have many Comments
+Recipe.hasMany(Comment, {
+  foreignKey: 'recipeId',
+  onDelete: 'CASCADE',
+});
+
+// Comment belongs to User
 Comment.belongsTo(User, {
   foreignKey: 'userId',
 });
 
-Recipe.hasMany(Comment, {
-  foreignKey: 'recipeId',
+// User can have many Comments
+User.hasMany(Comment, {
+  foreignKey: 'userId',
   onDelete: 'CASCADE',
 });
 
