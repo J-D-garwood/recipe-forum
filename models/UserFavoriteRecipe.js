@@ -31,7 +31,7 @@ userFavoriteRecipe.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'userFavoriteRecipe'
+      modelName: 'UserFavoriteRecipe'
     }
 )
 
