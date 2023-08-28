@@ -1,3 +1,110 @@
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+form {
+    /* width: 100%; */
+}
+
+form .form-group {
+    display: block;
+    width: 100%;
+    margin: 0.625rem 0;
+}
+
+form .form-input,
+form .form-textarea {
+    display: block;
+}
+
+form .form-input {
+    width: 98%;
+    padding: 0.75rem;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    margin: 0.625rem 0;
+    font-size: 1.2rem;
+    border: 1px solid #484848;
+    border-radius: 0.3rem;
+}
+
+form .form-input.form-input-squared {
+    border-radius: 0;
+}
+
+.btn {
+    text-align: center;
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    margin: 0;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 1px solid transparent;
+    outline: none;
+    color: #1a1a1a;
+    background-color: #aeaeae;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.btn.btn-primary {
+    background-color: #2d3e50;
+    color: #d9e9e8;
+}
+
+.btn:hover {
+    background-color: #cecece;
+}
+
+.card,
+.comment-form {
+    width: 100%;
+}
+
+.card-body {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#text-comment {
+    height: 100px;
+}
+
+.recipe-textarea {
+    color: #000000;
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    padding: 20px 15px 100px 15px;
+    line-height: 20px;
+
+}
+
+.textarea {
+    /* display: block; */
+    outline: none;
+    border: none;
+    resize: none;
+    width: 100%;
+    min-height: 40px;
+    line-height: 22px;
+
+}
+
+#span-like :hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#span-like {
+    padding: 10px;
+    background-color: #b5c2b5;
+
 *::before,
 *::after,
 * {
@@ -18,4 +125,5 @@ h3 {
 
 .background-homepage{
   background-color:rgb(189, 189, 189);
+
 }

@@ -1,0 +1,109 @@
+<div class='container'>
+  <div class='row justify-content-evenly'>
+    <div class='col-12 col-sm-12 px-0'>
+      <div class='card border-light mb-3'>
+        <div class='row g-0'>
+          <div class='col-md-6'>
+
+            <img
+              src='/images/recipe.jpg'
+              }}
+              class='img-fluid rounded-start'
+              alt='...'
+            />
+          </div>
+           <div class='col-md-6'>
+            <div class='card-body'>
+              <h2
+                class='my-3'
+                class='font-monospace card-title'
+              >{{recipe.title}}</h2>
+              <p class='fw-light card-text'>{{recipe.description}}</p>
+              <h6 class='card-subtitle text-body-secondary'>Published:
+                {{format_date recipe.dateCreated}}</h6>
+              <h6 class='my-3'>By :</h6>
+              <h6 class='fs-5'>{{recipe.user.name}}</h6>
+              <a id='like-link' class='position-relative'>
+                {{#if Liked}}
+                   <span
+                  id='span-like'
+                  class='opacity-100 m-4 badge rounded-pill fw-lighter'
+                >
+                {{else}}<span
+                  id='span-like'
+                  class='opacity-50 m-4 badge rounded-pill fw-lighter'
+                >
+                {{/if}}
+                  <i
+                    id='icon-like'
+                    class='fa-solid fa-heart'
+                    style='color: #9c162a;'
+                  ></i>
+                </span>
+              </a>
+              <h6
+                id='recipe-likes'
+                class='card-subtitle text-body-secondary'
+              >{{recipe.likes}}
+                likes</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class='mt-3' />
+    {{! ============================Ingredients========================== }}
+    <div
+      class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-6'
+    >
+      <h4 class='px-3 mb-3'>Ingredients</h4>
+      <textarea
+        class='px-3 py-3 textarea resize-ingredients'
+      >{{recipe.ingredients}}</textarea>
+    </div>
+    {{! ============================Instructions========================== }}
+    <div
+      class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-6'
+    >
+
+      <h4 class='px-3 mb-3'>Instructions</h4>
+      <textarea
+        class='px-3 py-3 textarea resize-instructions'
+      >{{recipe.instructions}}</textarea>
+    </div>
+    {{! ============================Comment========================== }}
+    <div
+      class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-12'
+    >
+      <h5 class='px-3 mb-3'>{{this.recipe.comments.length}} Comments 💬</h5>
+
+      {{#each recipe.comments as |comment|}}
+        <section class='ms-4'>
+          <h6 class='fs-5 mb-0'>{{comment.user.name}}</h6>
+          <h6 class='card-subtitle text-body-secondary mb-2'>
+            {{format_date comment.dateCreated}}</h6>
+          {{comment.comment}}
+          <hr class='opacity-25' />
+        </section>{{/each}}
+      <form class='form comment-form'>
+        <div class='form-group col-12 col-sm-12'>
+          <input
+            class='form-input mx-4'
+            type='textArea'
+            id='text-comment'
+            placeholder='Comment'
+          />
+        </div>
+        <div class='form-group'>
+          <button
+            id='save-comment'
+            class='btn btn-primary ms-4 rounded-pill px-4 py-0'
+            type='submit'
+          >Save</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<script src='/js/recipeDetails.js'></script>
