@@ -45,4 +45,4 @@ User.hasMany(Comment, {
   onDelete: 'CASCADE',
 });
 
-module.exports = { User, Recipe, UserFavoriteRecipe };
+module.exports = { User, Recipe, Comment, UserFavoriteRecipe };

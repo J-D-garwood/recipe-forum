@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Recipe, User } = require('../models');
+const { Recipe, User, Comment, UserFavoriteRecipe } = require('../models');
 const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection');
 
 router.get('/', async (req, res) => {
   try {
@@ -26,7 +27,7 @@ router.get('/', async (req, res) => {
 //GET route to return all the details related to a recipe by it's id
 router.get('/recipe/:id', withAuth, async (req, res) => {
   try {
-    const dbBlogData = await Recipe.findByPk(req.params.id, {
+    const dbRecipeData = await Recipe.findByPk(req.params.id, {
       include: [{ model: User, through: UserFavoriteRecipe }],
       attributes: {
         include: [
@@ -66,7 +67,7 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
       ],
     });
     req.session.recipeId = req.params.id;
-    const recipe = dbBlogData.get({ plain: true });
+    const recipe = dbRecipeData.get({ plain: true });
     //to show the like button on handlebars as clicked or not
     if (recipe.liked === 1) {
       req.session.Liked = true;
