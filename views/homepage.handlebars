@@ -1,5 +1,6 @@
 {{> nav}}
 
+{{#each recipes as |recipe|}}
 <button class="btn mx-auto mb-3 my-4" style="display: block; max-width: 650px; width: 100%; text-align: left;">
   <div class="row g-0">
     <div class="col-md-4">
@@ -7,14 +8,13 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h1 class="card-title">Food Name</h1>
-        <p class="card-text text-body-secondary">Description</p>
+        <h1 class="card-title">{{recipe.title}}</h1>
+        <p class="card-text text-body-secondary">{{recipe.description}}</p>
       </div>
     </div>
   </div>
 </button>
-
-
+{{/each}}
 
     
 
