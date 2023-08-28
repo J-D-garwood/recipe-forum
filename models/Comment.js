@@ -11,6 +11,7 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
+
     comment: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -42,6 +43,7 @@ Comment.init(
     underscored: true,
     modelName: 'comment',
   }
+
 );
 
 module.exports = Comment;

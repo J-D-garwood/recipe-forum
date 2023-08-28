@@ -46,3 +46,4 @@ User.hasMany(Comment, {
 });
 
 module.exports = { User, Recipe, Comment, UserFavoriteRecipe };
+
