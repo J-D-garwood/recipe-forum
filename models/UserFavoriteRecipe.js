@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class userFavoriteRecipe extends Model {}
+class UserFavoriteRecipe extends Model {}
 
 UserFavoriteRecipe.init(
   {
