@@ -1,11 +1,11 @@
-const login = document.querySelector(/*input login form query class*/);
-const signUp = document.querySelector(/*input signup form query class*/);
+const login = document.querySelector(".login");
+const signUp = document.querySelector(".signUp");
 
 const userLogin = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector(/*input login query id*/).value.trim();
-    const password = document.querySelector(/*input password query id*/).value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value.trim();
 
     if (email && password) {
         const response = await fetch('/api/users/login', {
@@ -26,9 +26,9 @@ const userLogin = async (event) => {
 const userSignUp = async (event) => {
     event.preventDefault();
 
-    const name = document.querySelector(/*input name signup query id*/).value.trim();
-    const email = document.querySelector(/*input email signup query id*/).value.trim();
-    const password = document.querySelector(/*input password signup query id*/).value.trim();
+    const name = document.querySelector("#firstName").value.trim() + " " + document.querySelector('#lastName').value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value.trim();
 
     if (name && email && password) {
         const response = await fetch('/api/users', {

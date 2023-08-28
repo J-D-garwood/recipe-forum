@@ -21,14 +21,13 @@
                       <a class="nav-link" href="#">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="#">Login/ Register</a>
                     </li>
+                    {{#if Logged_in}}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link btn btn-primary" href="#">Log Out</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Log Out</a>
-                    </li>
+                    {{/if}}
                    
     </header>
 </header>
