@@ -38,6 +38,9 @@ Recipe.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    imagePath: {
+      type: DataTypes.STRING,
+    },
   },
 
   {
