@@ -20,7 +20,7 @@ form .form-textarea {
 }
 
 form .form-input {
-    width: 98%;
+    width: 100%;
     padding: 0.75rem;
     color: #1a1a1a;
     background-color: #ffffff;
@@ -51,11 +51,11 @@ form .form-input.form-input-squared {
 
 .btn.btn-primary {
     background-color: #2d3e50;
-    color: #d9e9e8;
+    color: rgb(223, 219, 219);
 }
 
 .btn:hover {
-    background-color: #cecece;
+    background-color: #57779a;
 }
 
 .card,
@@ -85,7 +85,6 @@ form .form-input.form-input-squared {
 }
 
 .textarea {
-    /* display: block; */
     outline: none;
     border: none;
     resize: none;
@@ -95,14 +94,14 @@ form .form-input.form-input-squared {
 
 }
 
-#span-like :hover {
+a:hover {
     text-decoration: none;
     cursor: pointer;
 }
 
 #span-like {
     padding: 10px;
-    background-color: #b5c2b5;
+    background-color: rgb(189, 189, 189);
 }
 
 *::before,

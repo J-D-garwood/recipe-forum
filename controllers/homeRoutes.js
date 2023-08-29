@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
   }
 });
 //GET route to return all the details related to a recipe by it's id
-router.get('/recipe/:id', async (req, res) => {
+router.get('/recipe/:id', withAuth, async (req, res) => {
   try {
     const dbRecipeData = await Recipe.findByPk(req.params.id, {
       include: [{ model: User, through: UserFavoriteRecipe }],
@@ -41,9 +41,7 @@ router.get('/recipe/:id', async (req, res) => {
           [
             //  plain SQL which returns 1 if the logged in user liked the recipe and 0 if not.
             sequelize.literal(
-              `(SELECT COUNT(*) FROM userfavoriterecipe WHERE  userfavoriterecipe.recipe_id=${
-                req.params.id
-              } AND userfavoriterecipe.user_id=${1})`
+              `(SELECT COUNT(*) FROM userfavoriterecipe WHERE  userfavoriterecipe.recipe_id=${req.params.id} AND userfavoriterecipe.user_id=${req.session.userId})`
             ),
             'liked',
           ],
