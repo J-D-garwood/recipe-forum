@@ -113,7 +113,7 @@ a:hover {
 h1,
 h2,
 a {
-    font-family: "Staatliches", cursive;
+    font-family: Helvetica, Arial, Lucida Grande, Calibri, Verdana, Sans serif;;
 }
 
 li,
@@ -123,6 +123,25 @@ h3 {
 }
 
 .background-homepage {
-    background-color: rgb(189, 189, 189);
+    background-color: #cad5e1;
 
+}
+
+a.feed{
+    background-color: white;
+    color:black;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+a.feed:hover, a.feed:focus{
+    background-color: #81b1e3;    
+}
+
+.card-body1{
+    padding :10px;
+}
+
+.card-title{
+    font-size: 35px;
 }
