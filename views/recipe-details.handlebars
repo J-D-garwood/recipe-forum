@@ -2,12 +2,11 @@
   <div class='row justify-content-evenly'>
     <div class='col-12 col-sm-12 px-0'>
       <div class='card border-light mb-3'>
+        {{! ============================Image ,description , user name, date and likes ========================== }}
         <div class='row g-0'>
           <div class='col-md-6'>
-
             <img
-              src='/images/recipe.jpg'
-              }}
+              src='{{recipe.imagePath}}'
               class='img-fluid rounded-start'
               alt='...'
             />
@@ -75,20 +74,21 @@
     <div
       class='bg-light-subtle shadow-sm p-3 mb-5 bg-body-tertiary rounded col-12 col-sm-12'
     >
-      <h5 class='px-3 mb-3'>{{this.recipe.comments.length}} Comments 💬</h5>
+      <h5 class='px-3 mt-1 mb-3'>{{this.recipe.comments.length}} Comments 💬</h5>
 
       {{#each recipe.comments as |comment|}}
-        <section class='ms-4'>
+        <section class='mx-3'>
           <h6 class='fs-5 mb-0'>{{comment.user.name}}</h6>
           <h6 class='card-subtitle text-body-secondary mb-2'>
             {{format_date comment.dateCreated}}</h6>
           {{comment.comment}}
           <hr class='opacity-25' />
         </section>{{/each}}
+         <section class='mx-3'>
       <form class='form comment-form'>
         <div class='form-group col-12 col-sm-12'>
           <input
-            class='form-input mx-4'
+            class='form-input'
             type='textArea'
             id='text-comment'
             placeholder='Comment'
@@ -97,12 +97,12 @@
         <div class='form-group'>
           <button
             id='save-comment'
-            class='btn btn-primary ms-4 rounded-pill px-4 py-0'
+            class='btn btn-primary rounded-pill px-4 py-0'
             type='submit'
           >Save</button>
         </div>
       </form>
-
+</section>
     </div>
   </div>
 </div>

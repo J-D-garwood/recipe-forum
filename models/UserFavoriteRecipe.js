@@ -36,4 +36,3 @@ UserFavoriteRecipe.init(
 );
 
 module.exports = UserFavoriteRecipe;
-
