@@ -1,11 +1,11 @@
-const login = document.querySelector(".login");
-const signUp = document.querySelector(".signUp");
+const login = document.querySelector("#login");
+const signUp = document.querySelector("#signUp");
 
 const userLogin = async (event) => {
     event.preventDefault();
-
-    const email = document.querySelector("#email").value.trim();
-    const password = document.querySelector("#password").value.trim();
+    alert("function on")
+    const email = document.querySelector("#email_login").value.trim();
+    const password = document.querySelector("#password_login").value.trim();
 
     if (email && password) {
         const response = await fetch('/api/users/login', {
@@ -25,10 +25,10 @@ const userLogin = async (event) => {
 
 const userSignUp = async (event) => {
     event.preventDefault();
-
-    const name = document.querySelector("#firstName").value.trim() + " " + document.querySelector('#lastName').value.trim();
-    const email = document.querySelector("#email").value.trim();
-    const password = document.querySelector("#password").value.trim();
+    alert("function on")
+    const name = document.querySelector("#name_signup").value.trim();
+    const email = document.querySelector("#email_signup").value.trim();
+    const password = document.querySelector("#password_signup").value.trim();
 
     if (name && email && password) {
         const response = await fetch('/api/users', {
@@ -36,14 +36,18 @@ const userSignUp = async (event) => {
             body: JSON.stringify({ name, email, password}),
             headers: { 'Content-Type': 'application/json' },
         })
-
+        console.log(response);
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
     }
 };
 
-login.addEventListener('submit', userLogin);
-signUp.addEventListener('submit', userSignUp);
+document
+        .querySelector(".login")
+        .addEventListener('submit', userLogin);
+document
+        .querySelector(".signUp")
+        .addEventListener('submit', userSignUp);
