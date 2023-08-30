@@ -78,7 +78,7 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
       recipe,
       recipeId: req.session.recipeId,
       userId: req.session.userId,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
       Liked: req.session.Liked,
     });
   } catch (err) {
