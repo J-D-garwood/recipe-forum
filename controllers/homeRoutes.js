@@ -161,7 +161,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 router.get('/addnewrecipe', async (req, res) => {
   try {
     res.render('addnewrecipe', {
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
