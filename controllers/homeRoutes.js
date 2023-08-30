@@ -136,7 +136,7 @@ router.post('/recipe/like', async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.post('/upload', async (req, res) => {
+router.post('/upload', upload.single('file'), async (req, res) => {
   try {
     if (req.file == undefined) {
       return res.send(`You must select a file.`);
