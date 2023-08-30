@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Recipe, User, Comment, UserFavoriteRecipe } = require('../models');
 const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');
-
+const upload = require('../utils/upload');
 router.get('/', async (req, res) => {
   try {
     const RecipeData = await Recipe.findAll({
@@ -156,6 +156,16 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.send(`Error when trying upload images: ${error}`);
+  }
+});
+router.get('/addnewrecipe', async (req, res) => {
+  try {
+    res.render('addnewrecipe', {
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 module.exports = router;
