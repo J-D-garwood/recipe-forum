@@ -136,4 +136,26 @@ router.post('/recipe/like', async (req, res) => {
     res.status(500).json(err);
   }
 });
+router.post('/upload', async (req, res) => {
+  try {
+    if (req.file == undefined) {
+      return res.send(`You must select a file.`);
+    }
+    const dbRecipeData = await Recipe.create({
+      title: req.body.title,
+      description: req.body.description,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+      imagePath: '/images/uploads/' + req.file.filename,
+      userId: req.session.userId,
+    });
+    if (dbRecipeData) {
+      // redirect the user to the page of the recipe that just added
+      res.redirect(`/recipe/${dbRecipeData.id}`);
+    }
+  } catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload images: ${error}`);
+  }
+});
 module.exports = router;
