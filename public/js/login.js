@@ -3,7 +3,6 @@ const signUp = document.querySelector("#signUp");
 
 const userLogin = async (event) => {
     event.preventDefault();
-    alert("function on")
     const email = document.querySelector("#email_login").value.trim();
     const password = document.querySelector("#password_login").value.trim();
 
@@ -25,7 +24,6 @@ const userLogin = async (event) => {
 
 const userSignUp = async (event) => {
     event.preventDefault();
-    alert("function on")
     const name = document.querySelector("#name_signup").value.trim();
     const email = document.querySelector("#email_signup").value.trim();
     const password = document.querySelector("#password_signup").value.trim();
