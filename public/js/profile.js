@@ -6,3 +6,19 @@ const addNewRecipe = async (event) => {
 document
         .querySelector(".addNewRecipeBtn")
         .addEventListener("click", addNewRecipe)
+
+
+$(document).ready(function(){
+    $(".text-container").addClass("hidden");
+
+    $(".text-container").click(function(){
+        var $this = $(this);
+
+        if($this.hasClass("hidden")) {
+
+            $(this).removeClass("hidden").addclass("visible");
+        } else {
+            $(this).removeClass("visible").addClass("hidden");
+        }
+    })
+})

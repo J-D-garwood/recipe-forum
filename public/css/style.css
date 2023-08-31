@@ -188,3 +188,15 @@ a.feed:focus {
         width: 300px; */
     }
 }
+
+.hidden>div {
+	display:none;
+}
+
+.visible>div {
+	display:block;
+}
+
+.main-margin{
+    margin-top: 75px;
+}
