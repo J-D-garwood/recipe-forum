@@ -1,9 +1,9 @@
 
 {{#each recipes as |recipe|}}
-<div>
-  <a href="/recipe/{{recipe.id}}" class="feed rounded-4 mx-auto mb-3 my-4" style="display: block; max-width: 650px; width: 100%; text-align: left;">
+<div class="main-margin">
+  <a href="/recipe/{{recipe.id}}" class="feed rounded-4 mx-auto mb-3 my-3" style="display: block; max-width: 650px; width: 100%; text-align: left;">
   <div class="row g-0">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <img src="{{recipe.imagePath}}" class="img-fluid rounded-start" alt="Pic of food">
     </div>
     <div class="col-md-8">
