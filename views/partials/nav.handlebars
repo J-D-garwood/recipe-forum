@@ -1,9 +1,8 @@
 <header>
-       <header>
-        <nav class="navbar navbar-dark bg-dark">
+        <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
               <img src="#" alt="small logo" width="50" height="50">   
-              <a class="navbar-brand fw-bolder fs-2" href="#">Recipe Forum</a>
+              <a class="navbar-brand fw-bolder fs-2" href="/">RecipeBox</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -30,6 +29,8 @@
                     </li>
                     {{/if}}
                    
-    </header>
+    
 </header>
+{{#if logged_in}} 
 <script src='/js/logout.js'></script>
+{{/if}}
