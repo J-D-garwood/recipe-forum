@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Recipe, User, Comment, UserFavoriteRecipe } = require('../models');
 const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');
-
+const upload = require('../utils/upload');
 router.get('/', async (req, res) => {
   try {
     const RecipeData = await Recipe.findAll({
@@ -78,7 +78,7 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
       recipe,
       recipeId: req.session.recipeId,
       userId: req.session.userId,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
       Liked: req.session.Liked,
     });
   } catch (err) {
@@ -91,12 +91,12 @@ router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userId, {
-      attributes: { exclude: ['password'] },
+      // attributes: { exclude: ['password'] },
       include: [{ model: Recipe }],
     });
 
     const user = userData.get({ plain: true });
-
+    // console.log(user);
     res.render('profile', {
       ...user,
       logged_in: true,
@@ -131,6 +131,39 @@ router.post('/recipe/like', async (req, res) => {
     } else {
       res.status(201).json(dbFavoriteRecipeData);
     }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+//save the recipe / add a new recipe
+router.post('/upload', withAuth, upload.single('file'), async (req, res) => {
+  try {
+    if (req.file == undefined) {
+      return res.send(`You must select a file.`);
+    }
+    const dbRecipeData = await Recipe.create({
+      title: req.body.title,
+      description: req.body.description,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+      imagePath: '/images/uploads/' + req.file.filename,
+      userId: req.session.userId,
+    });
+    if (dbRecipeData) {
+      // redirect the user to the page of the recipe that just added
+      res.redirect(`/recipe/${dbRecipeData.id}`);
+    }
+  } catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload images: ${error}`);
+  }
+});
+router.get('/addnewrecipe', async (req, res) => {
+  try {
+    res.render('addnewrecipe', {
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

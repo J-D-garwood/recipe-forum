@@ -113,7 +113,8 @@ a:hover {
 h1,
 h2,
 a {
-    font-family: Helvetica, Arial, Lucida Grande, Calibri, Verdana, Sans serif;;
+    font-family: Helvetica, Arial, Lucida Grande, Calibri, Verdana, Sans serif;
+    ;
 }
 
 li,
@@ -126,21 +127,64 @@ h3 {
     background-color: #cad5e1;
 }
 
-a.feed{
+a.feed {
     background-color: white;
-    color:black;
+    color: black;
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
-a.feed:hover, a.feed:focus{
-    background-color: #81b1e3;    
+a.feed:hover,
+a.feed:focus {
+    background-color: #81b1e3;
 }
 
-.card-body1{
-    padding :10px;
+.card-body1 {
+    padding: 10px;
 }
 
-.card-title{
+.card-title {
     font-size: 35px;
+}
+
+#textarea-ingredients {
+    outline: none;
+    resize: none;
+}
+
+#textarea-instructions {
+    outline: none;
+    resize: none;
+}
+
+.preview-images {
+
+    border: ridge;
+    height: 506px;
+    width: 606px;
+}
+
+.btn-no-style {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.1s;
+}
+
+@media (max-width: 576px) {
+
+
+    .preview-images {
+
+        border: ridge;
+        height: 200px;
+        width: 300px;
+    }
+
+    .preview-images img {
+        /* height: 200;
+        width: 300px; */
+    }
 }
