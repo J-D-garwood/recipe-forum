@@ -91,12 +91,12 @@ router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userId, {
-      attributes: { exclude: ['password'] },
+      // attributes: { exclude: ['password'] },
       include: [{ model: Recipe }],
     });
 
     const user = userData.get({ plain: true });
-
+    // console.log(user);
     res.render('profile', {
       ...user,
       logged_in: true,
@@ -136,7 +136,8 @@ router.post('/recipe/like', async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.post('/upload', upload.single('file'), async (req, res) => {
+//save the recipe / add a new recipe
+router.post('/upload', withAuth, upload.single('file'), async (req, res) => {
   try {
     if (req.file == undefined) {
       return res.send(`You must select a file.`);
