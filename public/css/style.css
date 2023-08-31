@@ -160,19 +160,31 @@ a.feed:focus {
 .preview-images {
 
     border: ridge;
-    height: 504px;
-    width: 604px;
+    height: 506px;
+    width: 606px;
 }
 
 .btn-no-style {
-    /* color: var(--light); */
     background: none;
-    /* background-color: black; */
     border: none;
     padding: 0;
     cursor: pointer;
     text-decoration: none;
-    /* font-size: 100%; */
     transition: color 0.1s;
-    /* margin-left: 16px; */
+}
+
+@media (max-width: 576px) {
+
+
+    .preview-images {
+
+        border: ridge;
+        height: 200px;
+        width: 300px;
+    }
+
+    .preview-images img {
+        /* height: 200;
+        width: 300px; */
+    }
 }

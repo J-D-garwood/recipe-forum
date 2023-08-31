@@ -7,7 +7,7 @@ $(document).ready(function () {
         reader.onload = function (event) {
           $(
             $.parseHTML(
-              '<img style="width: 600px; height: 500px; object-fit: cover;">'
+              '<img style="width: 100%; height: 100%; object-fit: cover;">'
             )
           )
             .attr('src', event.target.result)
@@ -18,6 +18,7 @@ $(document).ready(function () {
     }
   };
   $('#input-files').on('change', function () {
+    $('.preview-images').empty();
     imagesPreview(this, 'div.preview-images');
   });
 });
