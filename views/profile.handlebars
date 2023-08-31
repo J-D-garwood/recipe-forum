@@ -1,6 +1,7 @@
 <div class='mt-4 mx-4'>
   <h1 class='text-center my-2'>Welcome to your Profile</h1>
   <p class='text-start mt-5 mb-4 fs-3'>Your Recipes</p>
+  {{#each createdRecipes as |recipe|}}
   <div class='row row-cols-1 row-cols-md-3 g-4'>
     <div class='col'>
       <div class='card h-100'>
@@ -12,18 +13,21 @@
       </div>
     </div>
   </div>
+  {{/each}}
   <p class='text-start mt-5 mb-4 fs-3'>Your Favourites</p>
+  {{#each favourites as |favourite|}}
   <div class='row row-cols-1 row-cols-md-3 g-4'>
     <div class='col'>
       <div class='card h-100'>
-        <img src='{{recipe.imagePath}}' class='card-img-top' alt='...' />
+        <img src='{{favourite.imagePath}}' class='card-img-top' alt='...' />
         <div class='card-body'>
-          <h5 class='card-title'>{{recipe.title}}</h5>
-          <p class='card-text'>{{recipe.description}}</p>
+          <h5 class='card-title'>{{favourite.title}}</h5>
+          <p class='card-text'>{{favourite.description}}</p>
         </div>
       </div>
     </div>
   </div>
+  {{/each}}
   <div class='mt-4'>
     <a
       class='btn btn-primary rounded-pill px-4 py-1 mb-4 addNewRecipeBtn'

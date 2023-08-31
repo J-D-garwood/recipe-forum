@@ -8,6 +8,7 @@ const UserFavoriteRecipe = require('./UserFavoriteRecipe');
 Recipe.belongsTo(User, {
   foreignKey: 'userId',
 });
+
 // Users can have many Recipes
 User.hasMany(Recipe, {
   foreignKey: 'userId',
@@ -16,11 +17,13 @@ User.hasMany(Recipe, {
 // User belongToMany Recipe (through UserFavoriteRecipe)
 User.belongsToMany(Recipe, {
   through: UserFavoriteRecipe,
+  as: "user_recipes",
 });
 
 // Recipe belongToMany User (through UserFavoriteRecipe)
 Recipe.belongsToMany(User, {
   through: UserFavoriteRecipe,
+  as: "recipe_users",
 });
 
 // Comment belongs to Recipe
