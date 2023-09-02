@@ -1,50 +1,52 @@
-<div id='div-content' class='mt-4 mx-4'>
-  <h1 class='text-center my-2'>Welcome to your Profile</h1>
-  <p class='text-start mt-5 mb-4 fs-3'>Your Recipes</p>
-  {{#each createdRecipes as |recipe|}}
-    <div class="text-container">
-    <button class="btn btn-primary text-start mt-5 mb-4 fs-3">Your Recipes</button>
-  <div class='row row-cols-1 row-cols-md-3 g-4'>
-  <div class='col'>
-    <a href="/recipe/{{recipe.id}}" style="text-decoration: none; color: inherit;"> <!-- Add this line -->
-      <div class='card h-100'>
-        <img src='{{recipe.imagePath}}' class='card-img-top' alt='...' />
-        <div class='card-body'>
-          <h5 class='card-title'>{{recipe.title}}</h5>
-          <p class='card-text'>{{recipe.description}}</p>
-        </div>
-      </div>
-    </a> 
-  </div>
-  {{/each}}
-  <p class='text-start mt-5 mb-4 fs-3'>Your Favourites</p>
-  {{#each favourites as |favourite|}}
-  <div class="text-container">
-    <button class="btn btn-primary text-start mt-5 mb-4 fs-3">Your Favourites</button>
-  <div class='row row-cols-1 row-cols-md-3 g-4'>
-  <div class='col'>
-    <a href="/recipe/{{recipe.id}}" style="text-decoration: none; color: inherit;"> <!-- Add this line -->
-      <div class='card h-100'>
-        <img src='{{favourite.imagePath}}' class='card-img-top' alt='...' />
-        <div class='card-body'>
-          <h5 class='card-title'>{{favourite.title}}</h5>
-          <p class='card-text'>{{favourite.description}}</p>
-        </div>
-      </div>
-    </a> 
-  </div>
-  </div>
-  {{/each}}
-  
-  </div>
+<div id='div-content' class=' mx-4 main-margin'>
+    <h1 class='text-center my-2'>Welcome to your Profile</h1>
     
-  </div>
-  {{/each}}
-  <div class='mt-4'>
-    <a
-      class='btn btn-primary rounded-pill px-4 py-1 mb-4 addNewRecipeBtn'
-      role='button'
-    >+ Add New Recipe</a>
-  </div>
+    
+    <div class="text-container">
+      <button class="btn btn-primary text-start mt-5 mb-4 fs-3">Your Recipes</button>
+      <div class="row">
+        {{#each createdRecipes as |recipe|}}
+            <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
+                <div class='col'>
+                    <a href="/recipe/{{recipe.id}}" style="text-decoration: none; color: inherit;">
+                        <div class='card h-100'>
+                            <img src='{{recipe.imagePath}}' class='card-img-top' alt='...' style="width: 100%; height: 100%; object-fit:cover;" />
+                            <div class='card-body'>
+                                <h5 class='card-title'>{{recipe.title}}</h5>
+                                <p class='card-text'>{{recipe.description}}</p>
+                            </div>
+                        </div>
+                    </a> 
+                </div>
+            </div>
+        {{/each}}
+      </div>
+    </div>
+
+    
+    <div class="text-container">
+      <button class="btn btn-primary text-start mt-5 mb-4 fs-3">Your Favourites</button>
+      <div class="row">
+        {{#each favourites as |favourite|}}
+            <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
+                <div class='col'>
+                    <a href="/recipe/{{favourite.id}}" style="text-decoration: none; color: inherit;">
+                        <div class='card h-100'>
+                            <img src='{{favourite.imagePath}}' class='card-img-top' alt='...' style="width: 100%; height: 100%; object-fit:cover;" />
+                            <div class='card-body'>
+                                <h5 class='card-title'>{{favourite.title}}</h5>
+                                <p class='card-text'>{{favourite.description}}</p>
+                            </div>
+                        </div>
+                    </a> 
+                </div>
+            </div>
+        {{/each}}
+      </div>
+    </div>
+    
+    <div class='mt-4'>
+        <a class='btn btn-primary rounded-pill px-4 py-1 mb-4 addNewRecipeBtn' role='button'>+ Add New Recipe</a>
+    </div>
 </div>
-<script src='/js/profile.js'></script>
+<script src='/js/profile.js'></script> 
