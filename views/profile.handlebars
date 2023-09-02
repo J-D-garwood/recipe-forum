@@ -1,14 +1,9 @@
-<div class="main-margin">
-
-<h2 class="text-center">Welcome to your Profile</h2>
-
+<div class='mt-4 mx-4'>
+  <h1 class='text-center my-2'>Welcome to your Profile</h1>
+  <p class='text-start mt-5 mb-4 fs-3'>Your Recipes</p>
+  {{#each createdRecipes as |recipe|}}
     <div class="text-container">
     <button class="btn btn-primary text-start mt-5 mb-4 fs-3">Your Recipes</button>
-
-
-    <div>
-
-    
   <div class='row row-cols-1 row-cols-md-3 g-4'>
   <div class='col'>
     <a href="/recipe/{{recipe.id}}" style="text-decoration: none; color: inherit;"> <!-- Add this line -->
@@ -21,29 +16,19 @@
       </div>
     </a> 
   </div>
-  </div>
-  
-  
-  </div>
-    
-  </div>
- 
-
+  {{/each}}
+  <p class='text-start mt-5 mb-4 fs-3'>Your Favourites</p>
+  {{#each favourites as |favourite|}}
   <div class="text-container">
     <button class="btn btn-primary text-start mt-5 mb-4 fs-3">Your Favourites</button>
-
-
-    <div>
-
-      {{#each user.recipes as |recipe|}}
   <div class='row row-cols-1 row-cols-md-3 g-4'>
   <div class='col'>
     <a href="/recipe/{{recipe.id}}" style="text-decoration: none; color: inherit;"> <!-- Add this line -->
       <div class='card h-100'>
-        <img src='{{recipe.imagePath}}' class='card-img-top' alt='...' />
+        <img src='{{favourite.imagePath}}' class='card-img-top' alt='...' />
         <div class='card-body'>
-          <h5 class='card-title'>{{recipe.title}}</h5>
-          <p class='card-text'>{{recipe.description}}</p>
+          <h5 class='card-title'>{{favourite.title}}</h5>
+          <p class='card-text'>{{favourite.description}}</p>
         </div>
       </div>
     </a> 
@@ -54,8 +39,7 @@
   </div>
     
   </div>
- 
-
+  {{/each}}
   <div class='mt-4'>
     <a
       class='btn btn-primary rounded-pill px-4 py-1 mb-4 addNewRecipeBtn'

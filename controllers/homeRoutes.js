@@ -3,6 +3,7 @@ const { Recipe, User, Comment, UserFavoriteRecipe } = require('../models');
 const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');
 const upload = require('../utils/upload');
+const { stringify } = require('uuid');
 router.get('/', async (req, res) => {
   try {
     const RecipeData = await Recipe.findAll({
@@ -89,6 +90,51 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
 
 router.get('/profile', withAuth, async (req, res) => {
   try {
+    const userWithFavouritesData = await User.findByPk(req.session.userId, {
+      include: [{ model: Recipe, through: UserFavoriteRecipe, as: 'user_recipes' }],
+    });
+    const favourites = userWithFavouritesData.user_recipes.map(fav => fav.get({plain: true}));
+  
+
+    const createdRecipesData = await Recipe.findAll({
+      where: {
+          userId: req.session.userId
+      }
+    });
+
+    const createdRecipes = createdRecipesData.map((recipe) => recipe.get({ plain: true }));
+
+    res.render('profile', {
+      createdRecipes,
+      favourites,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+    console.error(err);
+  }
+});
+
+/*
+    const recipeData = await Recipe.findAll({
+
+      //include: [{ model: User }],
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+      where: {
+        userId: req.session.userId
+      },
+    });
+    const recipe = recipeData.get({ plain: true });
+    res.render('profile', {
+      ...recipe,
+      logged_in: true,
+    });
+    /*
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userId, {
       attributes: { exclude: ['password'] },
@@ -104,10 +150,11 @@ router.get('/profile', withAuth, async (req, res) => {
       user,
       logged_in: true,
     });
+
   } catch (err) {
     res.status(500).json(err);
   }
-});
+});*/
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
@@ -121,6 +168,7 @@ router.get('/login', (req, res) => {
 router.post('/recipe/like', async (req, res) => {
   try {
     let [dbFavoriteRecipeData, created] = await UserFavoriteRecipe.findOrCreate(
+
       {
         where: { recipeId: req.body.id, userId: req.session.userId },
       }

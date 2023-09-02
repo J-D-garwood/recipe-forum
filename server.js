@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 const sess = {
   secret: '??????????',
   cookie: {
-    maxAge: 300000,
+    maxAge: 3000000,
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
@@ -25,6 +25,7 @@ const sess = {
     db: sequelize,
   }),
 };
+
 global.__basedir = __dirname;
 app.use(session(sess));
 const hbs = exphbs.create({ helpers });
