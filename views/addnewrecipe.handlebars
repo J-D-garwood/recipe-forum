@@ -9,47 +9,63 @@
     >
       <div class='form-group'>
         <label for='title'>Title</label>
-        <input class='form-input' type='textArea' name='title' placeholder='' />
+        <input
+          class='form-input'
+          type='textArea'
+          name='title'
+          placeholder=''
+          required
+        />
       </div>
 
       <div class='form-group'>
-        <label for='email'>Description</label>
+        <label for='description'>Description</label>
         <input
           class='form-input'
           type='textArea'
           name='description'
           placeholder=''
+          required
         />
       </div>
 
       <div class='form-group'>
-        <label for='password'>Ingredients</label>
+        <label for='ingredients'>Ingredients</label>
         <textarea
           id='textarea-ingredients'
           name='ingredients'
           class='form-input'
           rows='10'
           cols='80'
+          required
         ></textarea>
 
       </div>
       <div class='form-group'>
-        <label for='password'>Instructions</label>
+        <label for='instructions'>Instructions</label>
         <textarea
           id='textarea-instructions'
           name='instructions'
           class='form-input'
           rows='10'
           cols='80'
+          required
         ></textarea>
       </div>
       <div class='form-group'>
-        <div class='preview-images col-12 col-md-6'></div>
+        <label for='photo'>Photo</label>
+        <div class='preview-images col-12 col-md-6 mt-2 rounded'><img
+            src='/images/placeholder.jpeg'
+            style='width:100%; height:100%'
+            class='img-fluid rounded'
+            alt='...'
+          /></div>
         <input
           type='file'
           name='file'
           id='input-files'
           class='form-control-file border'
+          required
         />
       </div>
       <input
@@ -61,8 +77,5 @@
     </form>
   </div>
 </div>
-{{! <script
-  src='https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/js/bootstrap.bundle.min.js'
-></script> }}
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <script src='/js/addRecipe.js'></script>

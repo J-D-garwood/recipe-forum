@@ -221,3 +221,12 @@ a.feed:focus {
 .main-margin {
     margin-top: 75px;
 }
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #1a1616, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #201a1a, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #171010, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #231818, #f0f0f0);
+}
