@@ -1,22 +1,26 @@
-
 {{#each recipes as |recipe|}}
-<div class="main-margin">
-  <a href="/recipe/{{recipe.id}}" class="feed rounded-4 mx-auto mb-3 my-3" style="display: block; max-width: 650px; width: 100%; text-align: left;">
-  <div class="row g-0">
-    <div class="col-md-12">
-      <img src="{{recipe.imagePath}}" class="img-fluid rounded-start" alt="Pic of food">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body1">
-        <h1 class="card-title">{{recipe.title}}</h1>
-        <p class="card-text text-body-secondary">{{recipe.description}}</p>
+  <div id='div-content' class='main-margin'>
+    <a
+      href='/recipe/{{recipe.id}}'
+      class='feed rounded-4 mx-auto mb-3 my-3'
+      style='display: block; max-width: 650px; width: 100%; text-align: left;'
+    >
+      <div class='row g-0'>
+        <div class='col-md-12'>
+          <img
+            src='{{recipe.imagePath}}'
+            class='img-fluid rounded-start'
+            alt='Pic of food'
+          />
+        </div>
+        <div class='col-md-8'>
+          <div class='card-body1'>
+            <h1 class='card-title'>{{recipe.title}}</h1>
+            <p class='card-text text-body-secondary'>{{recipe.description}}</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
-</a>
-</div>
 
 {{/each}}
-
-    
-
