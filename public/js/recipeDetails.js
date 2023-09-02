@@ -61,8 +61,10 @@ iconLike.addEventListener('click', async (event) => {
       'Content-Type': 'application/json',
     },
   });
+  const result = await response.json();
   //if the user liked the recipe
-  if (response.status === 201) {
+  // if (response.status === 201) {
+  if (result.liked === 1) {
     iconLike.setAttribute('class', 'fa-solid fa-heart');
     const noOfLikes = recipeLike.innerHTML.split(' ');
     const likes = parseInt(noOfLikes[0]) + 1;
@@ -74,7 +76,8 @@ iconLike.addEventListener('click', async (event) => {
     return;
   }
   //if the user removed the like for the recipe
-  else if (response.status === 204) {
+  // else if (response.status === 204) {
+  else {
     const noOfLikes = recipeLike.innerHTML.split(' ');
     const likes = parseInt(noOfLikes[0]) - 1;
     recipeLike.innerHTML = likes + ' likes';
@@ -82,17 +85,10 @@ iconLike.addEventListener('click', async (event) => {
       'class',
       'opacity-50 m-4 badge rounded-pill fw-lighter'
     );
-    return;
-  } else {
-    alert('Failed to save like');
   }
   spanLike.setAttribute(
     'style',
     'padding: 10px 10px 10px 10px; color: a2041c;'
-  );
-  spanLike.setAttribute(
-    'class',
-    'opacity-100 m-4 badge rounded-pill fw-lighter'
   );
 });
 

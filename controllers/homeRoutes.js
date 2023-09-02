@@ -91,18 +91,23 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userWithFavouritesData = await User.findByPk(req.session.userId, {
-      include: [{ model: Recipe, through: UserFavoriteRecipe, as: 'user_recipes' }],
+      include: [
+        { model: Recipe, through: UserFavoriteRecipe, as: 'user_recipes' },
+      ],
     });
-    const favourites = userWithFavouritesData.user_recipes.map(fav => fav.get({plain: true}));
-  
+    const favourites = userWithFavouritesData.user_recipes.map((fav) =>
+      fav.get({ plain: true })
+    );
 
     const createdRecipesData = await Recipe.findAll({
       where: {
-          userId: req.session.userId
-      }
+        userId: req.session.userId,
+      },
     });
 
-    const createdRecipes = createdRecipesData.map((recipe) => recipe.get({ plain: true }));
+    const createdRecipes = createdRecipesData.map((recipe) =>
+      recipe.get({ plain: true })
+    );
 
     res.render('profile', {
       createdRecipes,
@@ -165,10 +170,9 @@ router.get('/login', (req, res) => {
 });
 
 // Create a new entry to the table userfavoriterecipe if the recipe is already not liked,otherwise delete the entry
-router.post('/recipe/like', async (req, res) => {
+router.post('/recipe/like', withAuth, async (req, res) => {
   try {
     let [dbFavoriteRecipeData, created] = await UserFavoriteRecipe.findOrCreate(
-
       {
         where: { recipeId: req.body.id, userId: req.session.userId },
       }
@@ -178,9 +182,9 @@ router.post('/recipe/like', async (req, res) => {
       dbFavoriteRecipeData = await UserFavoriteRecipe.destroy({
         where: { recipeId: req.body.id, userId: req.session.userId },
       });
-      res.status(204).json(dbFavoriteRecipeData);
+      res.status(200).json({ liked: 0 });
     } else {
-      res.status(201).json(dbFavoriteRecipeData);
+      res.status(201).json({ liked: 1 });
     }
   } catch (err) {
     console.log(err);
@@ -210,7 +214,7 @@ router.post('/upload', withAuth, upload.single('file'), async (req, res) => {
     return res.send(`Error when trying upload images: ${error}`);
   }
 });
-router.get('/addnewrecipe', async (req, res) => {
+router.get('/addnewrecipe', withAuth, async (req, res) => {
   try {
     res.render('addnewrecipe', {
       logged_in: req.session.logged_in,
