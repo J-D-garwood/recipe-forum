@@ -1,7 +1,28 @@
+body::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-image: url('/images/bg.jpeg');
+    background-repeat: no-repeat;
+    background-position: 10% 0;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 body {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     min-height: 100vh;
+    position: relative;
+}
+
+#div-content {
+    position: relative;
 }
 
 form {
@@ -114,7 +135,7 @@ h1,
 h2,
 a {
     font-family: Helvetica, Arial, Lucida Grande, Calibri, Verdana, Sans serif;
-    ;
+
 }
 
 li,
@@ -124,7 +145,7 @@ h3 {
 }
 
 .background-homepage {
-    background-color: #cad5e1;
+    /* background-color: #cad5e1; */
 }
 
 a.feed {
@@ -136,7 +157,7 @@ a.feed {
 
 a.feed:hover,
 a.feed:focus {
-    background-color: #81b1e3;
+    /* background-color: #81b1e3; */
 }
 
 .card-body1 {
@@ -190,13 +211,22 @@ a.feed:focus {
 }
 
 .hidden>div {
-	display:none;
+    display: none;
 }
 
 .visible>div {
-	display:block;
+    display: block;
 }
 
-.main-margin{
+.main-margin {
     margin-top: 75px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #1a1616, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #201a1a, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #171010, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #231818, #f0f0f0);
 }

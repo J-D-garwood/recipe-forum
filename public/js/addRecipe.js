@@ -21,15 +21,44 @@ $(document).ready(function () {
     $('.preview-images').empty();
     imagesPreview(this, 'div.preview-images');
   });
-});
-
-$(document).ready(function () {
   $('#textarea-ingredients').on('input', function () {
-    this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 10 + 'px';
+    let numberOfLineBreaks = (
+      $('#textarea-ingredients').val().match(/\n/g) || []
+    ).length;
+    // alert(this.scrollHeight);
+    if (numberOfLineBreaks < 9) {
+      this.style.height = 'auto';
+    }
+    if (this.scrollHeight >= 341) {
+      let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
+      this.style.height = newHeight;
+      this.style.height = this.scrollHeight;
+      this.style.height = this.scrollHeight + 10 + 'px';
+    }
   });
   $('#textarea-instructions').on('input', function () {
-    this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 10 + 'px';
+    let numberOfLineBreaks = (
+      $('#textarea-instructions').val().match(/\n/g) || []
+    ).length;
+    if (numberOfLineBreaks < 9) {
+      this.style.height = 'auto';
+    } else {
+      if (this.scrollHeight >= 341) {
+        let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
+        this.style.height = newHeight;
+        this.style.height = this.scrollHeight + 10 + 'px';
+      }
+    }
   });
 });
+
+// $(document).ready(function () {
+//   $('#textarea-ingredients').on('input', function () {
+//     this.style.height = 'auto';
+//     this.style.height = this.scrollHeight + 10 + 'px';
+//   });
+//   $('#textarea-instructions').on('input', function () {
+//     this.style.height = 'auto';
+//     this.style.height = this.scrollHeight + 10 + 'px';
+//   });
+// });
