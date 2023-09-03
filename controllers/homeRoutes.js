@@ -28,6 +28,9 @@ router.get('/', async (req, res) => {
 //GET route to return all the details related to a recipe by it's id
 router.get('/recipe/:id', withAuth, async (req, res) => {
   try {
+    if (isNaN(req.params.id)) {
+      return res.status(404).render('404');
+    }
     const dbRecipeData = await Recipe.findByPk(req.params.id, {
       include: [{ model: User, through: UserFavoriteRecipe }],
       attributes: {
@@ -68,6 +71,9 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
       ],
     });
     req.session.recipeId = req.params.id;
+    if (!dbRecipeData) {
+      return res.status(404).render('404');
+    }
     const recipe = dbRecipeData.get({ plain: true });
     //to show the like button on handlebars as clicked or not
     if (recipe.liked === 1) {
@@ -84,7 +90,7 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    return res.status(500).render('500');
   }
 });
 
@@ -223,5 +229,8 @@ router.get('/addnewrecipe', withAuth, async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+router.get('*', (req, res) => {
+  res.status(404).render('404');
 });
 module.exports = router;
