@@ -28,7 +28,7 @@ const userSignUp = async (event) => {
     const email = document.querySelector("#email_signup").value.trim();
     const password = document.querySelector("#password_signup").value.trim();
 
-    if (name && email && password) {
+    if (name && email && password && password.length>=8) {
         const response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({ name, email, password}),

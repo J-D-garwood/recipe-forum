@@ -119,3 +119,23 @@ const newFormHandler = async (event) => {
 document
   .querySelector('.comment-form')
   .addEventListener('submit', newFormHandler);
+
+
+const deleteRecipeHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    window.location.replace('/profile');
+    const response = await fetch(`/api/recipes/${id}`, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      window.location.replace('/profile');
+    } else {
+      alert('Failed to delete recipe');
+    }
+  }
+}
+
+document
+  .querySelector("#delete-recipe")
+  .addEventListener('click', deleteRecipeHandler)

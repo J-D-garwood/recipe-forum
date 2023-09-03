@@ -82,12 +82,18 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
     } else {
       req.session.Liked = false;
     }
+    if (recipe.userId==req.session.userId) {
+      isAuthored = true;
+    } else {
+      isAuthored = false;
+    }
     res.render('recipe-details', {
       recipe,
       recipeId: req.session.recipeId,
       userId: req.session.userId,
       logged_in: req.session.logged_in,
       Liked: req.session.Liked,
+      isAuthored,
     });
   } catch (err) {
     console.log(err);
