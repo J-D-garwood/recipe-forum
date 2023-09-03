@@ -45,6 +45,13 @@
                 class='card-subtitle text-body-secondary'
               >{{recipe.likes}}
                 likes</h6>
+            {{#if isAuthored}}
+            <button
+            id='delete-recipe'
+            class='btn btn-primary rounded-pill px-4 py-0 mt-4'
+            type='submit' data-id='{{recipe.id}}'
+          >Delete Recipe</button>
+          {{/if}}
             </div>
           </div>
         </div>
