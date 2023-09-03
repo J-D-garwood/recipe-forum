@@ -20,8 +20,8 @@
               <p class='fw-light fs-5'>{{recipe.description}}</p>
               <h6 class='card-subtitle text-body-secondary'>Published:
                 {{format_date recipe.dateCreated}}</h6>
-              <h6 class='my-3'>By :</h6>
-              <h6 class='fs-5'>{{recipe.user.name}}</h6>
+              <h6 class='my-3'>By : {{recipe.user.name}}</h6>
+              {{!-- <h6 class='fs-5'>{{recipe.user.name}}</h6> --}}
               <a id='like-link' class='position-relative'>
                 {{#if Liked}}
                    <span
@@ -45,6 +45,13 @@
                 class='card-subtitle text-body-secondary'
               >{{recipe.likes}}
                 likes</h6>
+                {{!-- <div class='form-group'> --}}
+          <button
+            id='delete-recipe'
+            class='btn btn-primary rounded-pill px-4 py-0 mt-4'
+            type='submit' data-id='{{recipe.id}}'
+          >Delete Recipe</button>
+        {{!-- </div> --}}
             </div>
           </div>
         </div>

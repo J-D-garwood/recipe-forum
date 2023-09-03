@@ -123,10 +123,6 @@
     box-sizing: border-box;
 }
 
-body {
-
-    margin-bottom: 50px;
-}
 
 
 h4 {
@@ -161,7 +157,7 @@ a.more-link {
     letter-spacing: 1px;
 }
 
-.home {
+.sec-height {
     padding: 9rem 0 2rem;
     height: 100vh;
     display: grid;

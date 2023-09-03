@@ -7,6 +7,7 @@ const { stringify } = require('uuid');
 router.get('/', async (req, res) => {
   try {
     const RecipeData = await Recipe.findAll({
+      order: [['id', 'DESC']],
       include: [
         {
           model: User,
@@ -97,14 +98,15 @@ router.get('/recipe/:id', withAuth, async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userWithFavouritesData = await User.findByPk(req.session.userId, {
+      attributes: ['name'],
       include: [
         { model: Recipe, through: UserFavoriteRecipe, as: 'user_recipes' },
       ],
     });
+
     const favourites = userWithFavouritesData.user_recipes.map((fav) =>
       fav.get({ plain: true })
     );
-
     const createdRecipesData = await Recipe.findAll({
       where: {
         userId: req.session.userId,

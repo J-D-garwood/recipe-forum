@@ -151,7 +151,7 @@ a.feed {
 
 a.feed:hover,
 a.feed:focus {
-    /* background-color: #81b1e3; */
+
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
 }
@@ -190,28 +190,10 @@ a.feed:focus {
     transition: color 0.1s;
 }
 
-@media (max-width: 576px) {
 
-
-    .preview-images {
-
-        border: ridge;
-        height: 200px;
-        width: 300px;
-    }
-
-    .preview-images img {
-        /* height: 200;
-        width: 300px; */
-    }
-}
 
 .hidden>div {
     display: none;
-}
-
-.visible>div {
-    display: block;
 }
 
 .main-margin {
@@ -225,4 +207,26 @@ hr {
     background-image: -moz-linear-gradient(left, #f0f0f0, #201a1a, #f0f0f0);
     background-image: -ms-linear-gradient(left, #f0f0f0, #171010, #f0f0f0);
     background-image: -o-linear-gradient(left, #f0f0f0, #231818, #f0f0f0);
+}
+
+@media (max-width: 576px) {
+
+
+    .preview-images {
+
+        border: ridge;
+        height: 200px;
+        width: 300px;
+    }
+
+}
+
+@media (max-width: 767.98px) {
+    .preview-images {
+
+        border: ridge;
+        height: 200px;
+        width: 300px;
+    }
+
 }
