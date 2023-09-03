@@ -124,12 +124,12 @@ document
 const deleteRecipeHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
-    window.location.replace('/profile');
+    window.location.replace('/');
     const response = await fetch(`/api/recipes/${id}`, {
       method: 'DELETE',
     });
     if (response.ok) {
-      window.location.replace('/profile');
+      window.location.replace('/');
     } else {
       alert('Failed to delete recipe');
     }
