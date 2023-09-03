@@ -48,6 +48,11 @@ RecipeBox is a user-friendly platform designed to bridge the gap between food en
 ## Future Enhancements
 - Ability to categorize recipes based on cuisine type.
 - An advanced search functionality for easier recipe discovery.
+- Ability for the user to be able to edit their recipes if need for correction or update​
+- Give the user the ability to create a shopping list, and options from where the ingredients can be found​
+- Ability to add more than one image for a recipe​
+- Implementing a rating system where users can rate recipes on a scale of 1 to 5​
+- Allow users to upload short video clips or tutorials alongside the recipe.
 
 ## Team Members
 -  <a href="https://github.com/andrei-ribeiro-wenceslau">Andrei Ribeiro Wenceslau</a> 

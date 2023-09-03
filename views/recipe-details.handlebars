@@ -20,8 +20,8 @@
               <p class='fw-light fs-5'>{{recipe.description}}</p>
               <h6 class='card-subtitle text-body-secondary'>Published:
                 {{format_date recipe.dateCreated}}</h6>
-              <h6 class='my-3'>By :</h6>
-              <h6 class='fs-5'>{{recipe.user.name}}</h6>
+              <h6 class='my-3'>By : {{recipe.user.name}}</h6>
+              {{!-- <h6 class='fs-5'>{{recipe.user.name}}</h6> --}}
               <a id='like-link' class='position-relative'>
                 {{#if Liked}}
                    <span
