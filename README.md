@@ -22,6 +22,8 @@ RecipeBox is a user-friendly platform designed to bridge the gap between food en
 ![image](https://github.com/J-D-garwood/recipe-forum/assets/133511202/6ab7bd08-25c6-4b07-af31-28a62bb4066a)
 ![image](https://github.com/J-D-garwood/recipe-forum/assets/133511202/37a496ea-1cbd-4b53-9e8e-a51a423a69e2)
 ![image](https://github.com/J-D-garwood/recipe-forum/assets/133511202/4759ac4d-7b9d-4f6f-8ebb-400cabe874f2)
+![image](https://github.com/J-D-garwood/recipe-forum/assets/133511202/9d249307-6ca2-491a-843d-8fe4f3ec745c)
+
 
 ## Technologies Used
 - `Handlebars.js`: A minimal templating engine used to render the views for our application.
